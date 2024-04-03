@@ -25,7 +25,8 @@
     "lint": "eslint --quiet packages --ext .ts",
     "lint:fix": "eslint --quiet --fix packages --ext .ts",
     "bootstrap": "source .env",
-    "release": "npm run clean && npm run build && lerna publish"
+    "release": "npm run clean && npm run build && lerna publish",
+    "publish": "lerna publish"
   },
   "dependencies": {
     "commander": "^9.4.1",
