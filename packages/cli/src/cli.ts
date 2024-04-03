@@ -1,5 +1,5 @@
 import { CmdOptions } from './types'
-import { Transmart } from '@transmart/core'
+import { Transmart } from '@andriikhr/transmart-core'
 import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as Spinnies from 'spinnies'

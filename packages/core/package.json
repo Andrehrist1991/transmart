@@ -1,5 +1,5 @@
 {
-  "name": "@transmart/core",
+  "name": "@andriikhr/transmart-core",
   "version": "0.4.4",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -30,5 +30,5 @@
     "@types/node-fetch": "^2.6.2",
     "typescript": "^4.9.5"
   },
-  "gitHead": "d3d8adb29bfdde157861aefd69a269ce68e5febb"
+  "gitHead": "a7723376f032a0a6f001ef71fa91dd07a2cbd22a"
 }
