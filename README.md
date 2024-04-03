@@ -8,12 +8,10 @@
 
 English | [简体中文](./README-zh_CN.md)
 
-
 ![alt](./assets/record.gif)
 
 ![npm](https://img.shields.io/npm/v/@transmart/cli?style=flat-square)
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/p/sandbox/v12-12v2h6?file=%2FREADME.md)
-
 
 Transmart is an open-source developer tool that utilizes ChatGPT to automate i18n translation. Given a base language and specifying all the languages that need to be output, running it will generate all i18n locale files.
 
@@ -61,7 +59,7 @@ First, create a transmart.config.js file in the root of your project. or any oth
 module.exports = {
   baseLocale: 'en',
   locales: ['fr', 'jp', 'de'],
-  localePath: 'public/locales',
+  localePath: 'src',
   openAIApiKey: 'your-own-openai-api-key',
   overrides: {
     'zh-CN': {
@@ -72,9 +70,6 @@ module.exports = {
   },
 }
 ```
-
-
-
 
 All Options [Reference](#options)
 
@@ -104,8 +99,6 @@ If you are not satisfied with the result of AI translation，use [`overrides`](#
 
 🎉🎉 Enjoy i18n
 
-
-
 ## Examples
 
 - [next.js](./examples/next.js)
@@ -113,23 +106,23 @@ If you are not satisfied with the result of AI translation，use [`overrides`](#
 
 ## Options
 
-| Name             | Type                                  | Description                                                                                     | Required |
-| ---------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------- | :------: |
-| baseLocale       | string                                | The language that Transmart will use as translation ref.                                        |   Yes    |
-| locales          | string[]                              | All languages that need to be translated                                                        |   Yes    |
-| localePath       | string                                | Where you store your locale files                                                               |   Yes    |
-| openAIApiKey     | string                                | The OpenAI API Key.                                                                             |   Yes    |
-| context     | string                                | Provide some context for a more accurate translation.                                                                             |   No    |
-| openAIApiModel   | string                                | OpenAI API model, default to `gpt-3.5-turbo-16k-0613`                                                    |    No    |
-| overrides        | `Record<string, Record<string, Record<string, any>>>` | used to overwrite the generated JSON if you are not satisfied with the result of AI translation (locale-namespace-key:value) |    No    |
-| namespaceGlob    | string\|string[]                      | Glob for namespace(s) to process, useful to include or exclude some files, learn more [glob](https://www.npmjs.com/package/glob#usage)                                                            |    No    |
-| openAIApiUrl     | string                                | Optional base url of OpenAI API, useful with proxy                                              |    No    |
-| openAIApiUrlPath | string                                | Optional URL endpoint of OpenAI API, useful with proxy                                          |    No    |
-| modelContextLimit | number                               | Optional max context window that the model supports. For example for gpt-4-32k, the context is 32768 tokens. Default to 4096 (gpt-3.5-turbo)      |    No    |
-| modelContextSplit | number                               | Optional ratio to split between number of input / output tokens. For example, if the input language is English and output is Spanish, you may expect 1 input token to produce 2 output tokens. In this case, the variable is set to 1/2. By default, modelContextSplit is set to 1/1      |    No    |
-| systemPromptTemplate | function                               | (For advanced usage) Custom prompt template. See "translate.ts" for the default prompt.      |    No    |
-| additionalReqBodyParams | any                               | (For advanced usage) Custom parameters to be passed into request body. Useful if you use a self-hosted model and you want to customize model parameters. For example, see [llama.cpp server example](https://github.com/ggerganov/llama.cpp/tree/master/examples/server)      |    No    |
-|  |
+| Name                    | Type                                                  | Description                                                                                                                                                                                                                                                                          | Required |
+| ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------: |
+| baseLocale              | string                                                | The language that Transmart will use as translation ref.                                                                                                                                                                                                                             |   Yes    |
+| locales                 | string[]                                              | All languages that need to be translated                                                                                                                                                                                                                                             |   Yes    |
+| localePath              | string                                                | Where you store your locale files                                                                                                                                                                                                                                                    |   Yes    |
+| openAIApiKey            | string                                                | The OpenAI API Key.                                                                                                                                                                                                                                                                  |   Yes    |
+| context                 | string                                                | Provide some context for a more accurate translation.                                                                                                                                                                                                                                |    No    |
+| openAIApiModel          | string                                                | OpenAI API model, default to `gpt-3.5-turbo-16k-0613`                                                                                                                                                                                                                                |    No    |
+| overrides               | `Record<string, Record<string, Record<string, any>>>` | used to overwrite the generated JSON if you are not satisfied with the result of AI translation (locale-namespace-key:value)                                                                                                                                                         |    No    |
+| namespaceGlob           | string\|string[]                                      | Glob for namespace(s) to process, useful to include or exclude some files, learn more [glob](https://www.npmjs.com/package/glob#usage)                                                                                                                                               |    No    |
+| openAIApiUrl            | string                                                | Optional base url of OpenAI API, useful with proxy                                                                                                                                                                                                                                   |    No    |
+| openAIApiUrlPath        | string                                                | Optional URL endpoint of OpenAI API, useful with proxy                                                                                                                                                                                                                               |    No    |
+| modelContextLimit       | number                                                | Optional max context window that the model supports. For example for gpt-4-32k, the context is 32768 tokens. Default to 4096 (gpt-3.5-turbo)                                                                                                                                         |    No    |
+| modelContextSplit       | number                                                | Optional ratio to split between number of input / output tokens. For example, if the input language is English and output is Spanish, you may expect 1 input token to produce 2 output tokens. In this case, the variable is set to 1/2. By default, modelContextSplit is set to 1/1 |    No    |
+| systemPromptTemplate    | function                                              | (For advanced usage) Custom prompt template. See "translate.ts" for the default prompt.                                                                                                                                                                                              |    No    |
+| additionalReqBodyParams | any                                                   | (For advanced usage) Custom parameters to be passed into request body. Useful if you use a self-hosted model and you want to customize model parameters. For example, see [llama.cpp server example](https://github.com/ggerganov/llama.cpp/tree/master/examples/server)             |    No    |
+|                         |
 
 ## Contributing
 

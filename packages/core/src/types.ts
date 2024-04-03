@@ -4,6 +4,10 @@ export interface TransmartOptions {
    */
   baseLocale: string
   /**
+   * name of folders that contain translations
+   */
+  targetFoldersName?: string
+  /**
    * all the languages that need to be translated (including baseLocale which is also acceptable)
    */
   locales: string[]
